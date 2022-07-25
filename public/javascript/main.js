@@ -1,5 +1,5 @@
 const body = document.body
-
+// const button = document.getElementById('sendButton')
 const btnTheme = document.querySelector('.fa-moon')
 const btnHamburger = document.querySelector('.fa-bars')
 
@@ -61,3 +61,36 @@ const scrollUp = () => {
 }
 
 document.addEventListener('scroll', scrollUp)
+
+document.getElementById('sendButton').addEventListener('submit', sendEmail)
+
+async function sendEmail(e){
+	e.preventDeafault();
+    
+	const fName = document.getElementById('first-name').value;
+	const lName = document.getElementById('last-name').value;
+	const eMail = document.getElementById('e-mail').value;
+	const message = document.getElementById('message').value;
+
+	try{
+        const response = await fetch('http://localhost:3000/email', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+              'firstName': fName,
+              'lastName': lName,
+			  'email': eMail,
+			  'message': message
+            })
+          })
+        const data = await response.json()
+        console.log(data)
+		console.log(fname)
+        location.reload()
+
+    }catch(err){
+        console.log(err)
+    }
+}
+
+

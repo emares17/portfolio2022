@@ -13,8 +13,8 @@ const ses = new aws.SES({
 });
 
 router.post('/email', (req, res) => {
-    const {email, message, name} = req.body;
-    sesTest('estebanmares17@gmail.com', email, message, name).then((val) => {
+    const {email, message, firstName, lastName} = req.body;
+    sesTest('estebanmares17@gmail.com', email, message, firstName, lastName).then((val) => {
         console.log('got this back', val)
         res.send('successful');
     })
@@ -23,7 +23,7 @@ router.post('/email', (req, res) => {
     })
 });
 
-function sesTest(emailTo, emailFrom, message, name) {
+function sesTest(emailTo, emailFrom, message, firstName, lastName) {
     const params = {
         Destination: {
             ToAddresses: [emailTo]
@@ -31,7 +31,7 @@ function sesTest(emailTo, emailFrom, message, name) {
         Message: {
             Body: {
                 Text: {
-                    Data: 'From Contact: ' + name + '\n' + message
+                    Data: 'From Contact: ' + firstName + " " + lastName + '\n' + message
                 }
             },
             Subject: {
