@@ -13,6 +13,7 @@ app.post("/", (req, res) => {
     console.log(req.body);
     const { email } = req.body;
     res.status(200).json({ email });
+    res.redirect('http://localhost:3000')
   });
 
 app.listen(PORT);

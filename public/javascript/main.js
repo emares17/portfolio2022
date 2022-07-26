@@ -77,15 +77,15 @@ async function sendEmail(e){
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
-              'firstName': fName,
-              'lastName': lName,
 			  'email': eMail,
-			  'message': message
+			  'message': message,
+			  'firstName': fName,
+			  'lastName': lName
             })
           })
         const data = await response.json()
         console.log(data)
-		console.log(fname)
+		console.log(message)
         location.reload()
 
     }catch(err){

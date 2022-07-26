@@ -1,9 +1,11 @@
-import express from 'express'
-
+import express, { urlencoded } from 'express'
+import bodyParser from 'body-parser'
 import dotenv from 'dotenv'
 dotenv.config();
 
 import aws from 'aws-sdk'
+
+const urlendcodedParser = bodyParser.urlencoded({ extended: false });
 
 const router = express.Router();
 const ses = new aws.SES({
@@ -12,7 +14,7 @@ const ses = new aws.SES({
     region: 'us-west-1'
 });
 
-router.post('/email', (req, res) => {
+router.post('/email', urlendcodedParser, (req, res) => {
     const {email, message, firstName, lastName} = req.body;
     sesTest('estebanmares17@gmail.com', email, message, firstName, lastName).then((val) => {
         console.log('got this back', val)
