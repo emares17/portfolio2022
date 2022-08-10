@@ -65,7 +65,7 @@ document.addEventListener('scroll', scrollUp)
 document.getElementById('sendButton').addEventListener('submit', sendEmail)
 
 async function sendEmail(e){
-	e.preventDeafault();
+	e.preventDefault();
     
 	const fName = document.getElementById('first-name').value;
 	const lName = document.getElementById('last-name').value;
@@ -86,8 +86,6 @@ async function sendEmail(e){
         const data = await response.json()
         console.log(data)
 		console.log(message)
-        location.reload()
-
     }catch(err){
         console.log(err)
     }

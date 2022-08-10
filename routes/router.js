@@ -18,7 +18,7 @@ router.post('/email', urlendcodedParser, (req, res) => {
     const {email, message, firstName, lastName} = req.body;
     sesTest('estebanmares17@gmail.com', email, message, firstName, lastName).then((val) => {
         console.log('got this back', val)
-        res.send('successful');
+        res.redirect('/');
     })
     .catch(err => {
         res.send('/error' + err);
