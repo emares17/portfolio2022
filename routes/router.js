@@ -1,48 +1,46 @@
-import express, { urlencoded } from 'express'
-import bodyParser from 'body-parser'
-import dotenv from 'dotenv'
-dotenv.config();
-
-import aws from 'aws-sdk'
-
-const urlendcodedParser = bodyParser.urlencoded({ extended: false });
-
+const express = require('express');
 const router = express.Router();
-const ses = new aws.SES({
-    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-    accessSecretKey: process.env.AWS_SECRET_ACCESS_KEY,
-    region: 'us-west-1'
+const nodemailer = require('nodemailer');
+
+router.get('/', async (req,res) => {
+    try {
+        res.render('index');
+    } catch (err) {
+        console.error(err)
+        res.status(500).send('Server Error');
+    }
 });
 
-router.post('/email', urlendcodedParser, (req, res) => {
-    const {email, message, firstName, lastName} = req.body;
-    sesTest('estebanmares17@gmail.com', email, message, firstName, lastName).then((val) => {
-        console.log('got this back', val)
-        res.redirect('/');
-    })
-    .catch(err => {
-        res.send('/error' + err);
-    })
-});
+router.post('/email', (req, res) => {
+    const firstName = req.body.firstName;
+    const lastName = req.body.lastName;
+    const email = req.body.email;
+    const message = req.body.message;
 
-function sesTest(emailTo, emailFrom, message, firstName, lastName) {
-    const params = {
-        Destination: {
-            ToAddresses: [emailTo]
-        },
-        Message: {
-            Body: {
-                Text: {
-                    Data: 'From Contact: ' + firstName + " " + lastName + '\n' + message
-                }
-            },
-            Subject: {
-                Data: 'Name: ' + emailFrom
-            }
-        },
-        Source: 'estebanmares17@gmail.com'
+    const trasporter = nodemailer.createTransport({
+        service: 'Gmail',
+        auth: {
+            user: 'estebanmares17@gmail.com',
+            pass: process.env.GMAIL_PASS
+        }
+    });
+
+    const mailOption = {
+        from: email,
+        to: 'estebanmares17@gmail.com',
+        subject: 'Contact Form Submission',
+        html: `<p><strong>Name:</strong> ${firstName} ${lastName}</p><p><strong>Email:</strong> ${email}</p><p><strong>Message:</strong> ${message}</p>`
     };
-    return ses.sendEmail(params).promise();
-}
 
-export default router;
+    trasporter.sendMail(mailOption, (error, info) => {
+        if (error) {
+            console.log(error);
+            res.send('Error');
+        } else {
+            console.log('Email Sent: ' + info.response);
+            res.redirect('/');
+        }
+    });
+});
+
+module.exports = router;

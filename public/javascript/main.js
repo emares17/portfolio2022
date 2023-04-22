@@ -62,33 +62,6 @@ const scrollUp = () => {
 
 document.addEventListener('scroll', scrollUp)
 
-document.getElementById('sendButton').addEventListener('submit', sendEmail)
 
-async function sendEmail(e){
-	e.preventDefault();
-    
-	const fName = document.getElementById('first-name').value;
-	const lName = document.getElementById('last-name').value;
-	const eMail = document.getElementById('e-mail').value;
-	const message = document.getElementById('message').value;
-
-	try{
-        const response = await fetch('http://localhost:3000/email', {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({
-			  'email': eMail,
-			  'message': message,
-			  'firstName': fName,
-			  'lastName': lName
-            })
-          })
-        const data = await response.json()
-        console.log(data)
-		console.log(message)
-    }catch(err){
-        console.log(err)
-    }
-}
 
 
