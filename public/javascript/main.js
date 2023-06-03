@@ -63,5 +63,36 @@ const scrollUp = () => {
 document.addEventListener('scroll', scrollUp)
 
 
+const validateForm = (event) => {
+    event.preventDefault(); 
 
+    
+    const firstName = document.getElementById('first-name').value;
+    const lastName = document.getElementById('last-name').value;
+    const email = document.getElementById('e-mail').value;
+    const message = document.getElementById('message').value;
+	const messageDiv = document.getElementById('message-div');
+
+    
+    if (!firstName || !lastName || !email || !message) {
+      
+    //   const messageDiv = document.getElementById('message-div');
+      messageDiv.textContent = 'Please fill in all fields.';
+
+	  setTimeout(() => {
+		messageDiv.textContent = '';
+	  }, 5000);
+
+      return; 
+    } 
+
+    event.target.submit();
+
+	messageDiv.textContent = 'Message Sent!';
+
+	setTimeout(() => {
+		messageDiv.textContent = '';
+	}, 5000);
+
+  }
 

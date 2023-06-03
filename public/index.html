@@ -71,7 +71,7 @@
           </a>
 
           <a
-            href="https://github.com/rajshekhar26"
+            href="https://github.com/emares17"
             aria-label="github"
             class="link link--icon"
           >
@@ -79,7 +79,7 @@
           </a>
 
           <a
-            href="https://linkedin.com/in/rajshekhar26"
+            href="https://linkedin.com/in/devesteban"
             aria-label="linkedin"
             class="link link--icon"
           >
@@ -152,27 +152,28 @@
           </div>
 
           <div class="project">
-            <h3>Project 3</h3>
+            <a href="https://githubusersearch-api.netlify.app/">
+              <img src="/images/devfinder.PNG" alt="Devfinder">
+            </a>
+            <h3>Devfinder</h3>
             <p class="project__description">
-              Ipsum accusamus ea excepturi aliquid eligendi amet. Explicabo
-              sapiente debitis labore sed ipsam Mollitia repellat illum quod
-              unde beatae Quis
+              Devfinder! With HTML, CSS, and JavaScript magic, Devfinder allows you to search any GitHub user and instantly access their followers, location, repos, and more.
             </p>
             <ul class="project__stack">
-              <li class="project__stack-item">SASS</li>
-              <li class="project__stack-item">TypeScript</li>
-              <li class="project__stack-item">React</li>
+              <li class="project__stack-item">HTML</li>
+              <li class="project__stack-item">CSS</li>
+              <li class="project__stack-item">Javascript</li>
             </ul>
 
             <a
-              href="https://github.com"
+              href="https://github.com/emares17/github-user-search"
               aria-label="source code"
               class="link link--icon"
             >
               <i aria-hidden="true" class="fab fa-github"></i>
             </a>
             <a
-              href="https://example.com"
+              href="https://githubusersearch-api.netlify.app/"
               aria-label="live preview"
               class="link link--icon"
             >
@@ -204,11 +205,11 @@
           <span class="btn btn--outline">Email me</span>
         </a>
       </section> -->
-      <main class="about center">
+      <section  id="contact" class="section contact center">
         <div class="title">Contact Me</div>
         <div class="title-info">I will get back to you soon!</div>
 
-        <form  action= "/email" method="POST" class="form">
+        <form  action= "/email" method="POST" class="form" onsubmit="validateForm(event)">
             <div class="input-group">
                 <input type="text" name="firstName" id="first-name" placeholder="First name">
                 <label for="first-name">First Name</label>
@@ -228,6 +229,8 @@
                 <textarea name="message" id="message" rows="5" placeholder="Message"></textarea>
                 <label for="message">Message</label>
             </div>
+
+            <div id="message-div" class="message-div"></div>
 
             <div class="button-div">
                 <button class="btn btn--outline button" id="sendButton" type="submit">Send</button>
