@@ -7,7 +7,8 @@ exports.getAboutMe = async(req, res) => {
     } catch (error) {
         console.error(error);
         res.status(500).json({
-            message: 'An error occurred while fetching the About Me data'
+            message: 'An error occurred while fetching the About Me data',
+            error: error.message
         });
     }
 }
@@ -15,14 +16,16 @@ exports.getAboutMe = async(req, res) => {
 exports.createAboutMe = async(req, res) => {
     try {
         const create = req.body;
-        await AboutMe.create(create);
+        const createdAboutMe = await AboutMe.create(create);
         res.status(201).json({
-            message: "About Me was created successfully"
+            message: "About Me was created successfully",
+            aboutme: createdAboutMe
         });
     } catch (error) {
         console.error(error);
         res.status(500).json({
-            message: 'An error occurred while creating an About Me'
+            message: 'An error occurred while creating an About Me',
+            error: error.message
         });
     }
 }
