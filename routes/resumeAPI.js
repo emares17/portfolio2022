@@ -3,6 +3,7 @@ const router = express.Router();
 const { getAboutMe, createAboutMe } = require('../controllers/aboutme');
 const { getContact, createContact } = require('../controllers/contact');
 const { getProjects, createProject } = require('../controllers/projects');
+const { getRoutes, createRoute } = require('../controllers/routes');
 
 // About Me Routes
 // Endpoint: /api/aboutme
@@ -18,5 +19,10 @@ router.post('/contact', createContact);
 // Endpoint: /api/projects
 router.get('/projects', getProjects);
 router.post('/projects', createProject);
+
+// Routes
+// Endpoint: /api/routes
+router.get('/routes', getRoutes);
+router.post('/routes', createRoute);
 
 module.exports = router;
