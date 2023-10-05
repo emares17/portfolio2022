@@ -3,11 +3,11 @@ const AboutMe = require('../models/AboutMe');
 exports.getAboutMe = async(req, res) => {
     try {
         const result = await AboutMe.find({});
-        res.json(result);
+        res.status(201).json(result);
     } catch (error) {
         console.error(error);
         res.status(500).json({
-            message: 'An error occurred while fetching the About Me data',
+            message: 'An error occurred fetching the About Me data',
             error: error.message
         });
     }

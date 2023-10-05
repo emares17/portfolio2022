@@ -4,6 +4,7 @@ const { getAboutMe, createAboutMe } = require('../controllers/aboutme');
 const { getContact, createContact } = require('../controllers/contact');
 const { getProjects, createProject } = require('../controllers/projects');
 const { getRoutes, createRoute } = require('../controllers/routes');
+const { getComments, createComment } = require('../controllers/comments');
 
 // About Me Routes
 // Endpoint: /api/aboutme
@@ -20,9 +21,14 @@ router.post('/contact', createContact);
 router.get('/projects', getProjects);
 router.post('/projects', createProject);
 
+// Comments Routes
+// Endpoint: /api/comments
+router.get('/comments', getComments);
+router.post('/comments', createComment);
 // Routes
 // Endpoint: /api/routes
 router.get('/routes', getRoutes);
 router.post('/routes', createRoute);
+
 
 module.exports = router;
