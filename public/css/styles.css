@@ -369,6 +369,18 @@
     transition: transform 0.2s ease-in-out;
   }
 
+  .contents li {
+    display: flex;
+    align-items: flex-start;
+    margin-top: .5em;
+  }
+
+  .separator {
+    border: none;
+    border-top: 1px solid var(--clr-fg-alt); 
+    margin-top: 20px; 
+    margin-bottom: 20px; 
+  }
   /* ------------------Contact form styles-------------------- */
   /* main
   {
