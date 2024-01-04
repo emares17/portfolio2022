@@ -484,6 +484,27 @@ button
     margin-right: 1em;
   }
   
+  .curl {
+    text-decoration: underline;
+  }
+
+  .snippet {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin: 1rem;
+    background-color: var(--clr-fg-alt);
+    color: var(--clr-bg);
+    padding-left: .5rem;
+  }
+
+  .copy {
+    width: 25%;
+    background-color: var(--clr-bg);
+    color: var(--clr-fg-alt);
+    margin: .1rem;
+  }
+
   /* Media queries */
 
   @media (max-width: 600px) {

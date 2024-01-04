@@ -15,7 +15,7 @@
       crossorigin="anonymous"
     ></script>
     <link rel="stylesheet" href="/css/styles.css" />
-    <title>Resume API</title>
+    <title>Esteban Mares | Resume API</title>
   </head>
   <body class="light" id="top">
     <header class="header center">
@@ -65,6 +65,23 @@
       </ul>
     </div>
     <hr class="separator">
+    <div class="about center">
+      <h2 class="about__role">cURL</h2>
+      <p class="about__desc">To interact with the Resume API from the command line, you will need to install <a class="curl" href="https://curl.se/windows/" target="_blank">cURL</a> following these simple steps.</p>
+      <ul>
+        <li class="about__desc">1. Visit the <a class="curl" href="https://curl.se/windows/" target="_blank">cURL</a> download page and install the correct version.</li>
+        <li class="about__desc">2. Verify that cURL has been successfully installed by typing the following command: <br>
+          <span class="snippet">curl --version 
+            <button class="copy" data-text="curl --version">Copy</button>
+          </span>
+        </li>
+        <li class="about__desc">3. Once cURL has been successfully installed, type the following command to explore all available endpoints. <br>
+          <span class="snippet">curl -k http://localhost:3000/api/routes
+            <button class="copy" data-text="http://localhost:3000/api/routes">Copy</button>
+          </span>
+        </li>
+      </ul>
+    </div>
 
     
     <div class="scroll-container">
