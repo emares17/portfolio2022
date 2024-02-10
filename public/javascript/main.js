@@ -100,16 +100,25 @@ let animationInterval;
 let titles = ['🎵 Baby come back 🎵', '🎵 Baby come back. 🎵', '🎵 Baby come back.. 🎵', '🎵 Baby come back... 🎵'];
 let currentIndex = 0;
 
-document.addEventListener('visibilitychange', () => {
-	if (document.hidden) {
-		setTimeout(() => {
-			animationInterval = setInterval(() => {
-				document.title = titles[currentIndex];
-				currentIndex = (currentIndex + 1) % titles.length;
-			}, 500);
-		}, 5000);
-	} else {
-		clearInterval(animationInterval);
-		document.title = 'Esteban Mares';
-	}
+const startAnimation = () => {
+	animationInterval = setInterval(() => {
+		document.title = titles[currentIndex];
+		currentIndex = (currentIndex + 1) % titles.length;
+	}, 5000)
+};
+
+const stopAnimation = () => {
+	clearInterval(animationInterval);
+	document.title = 'Esteban Mares';
+};
+
+window.addEventListener('focus', () => {
+	stopAnimation();
 });
+
+window.addEventListener('blur', () => {
+	startAnimation();
+});
+
+
+ 
